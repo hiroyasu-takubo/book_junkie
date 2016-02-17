@@ -12,5 +12,10 @@ module ApplicationHelper
     end
   end
 
+  #アプリケーションの名前を返す。
+  def application_name
+
+  end
+
   
 end
