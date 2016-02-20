@@ -11,11 +11,5 @@ module ApplicationHelper
       page_title + "|" + base_title
     end
   end
-
-  #アプリケーションの名前を返す。
-  def application_name
-
-  end
-
   
 end
