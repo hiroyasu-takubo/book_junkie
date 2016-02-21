@@ -12,7 +12,7 @@ class ActiveSupport::TestCase
     !session[:user_id].nil?
   end
 
-  # login as test user
+  # login as test user 
   def log_in_as(user, options = {})
     password    = options[:password]    || 'password'
     remember_me = options[:remember_me] || '1'
