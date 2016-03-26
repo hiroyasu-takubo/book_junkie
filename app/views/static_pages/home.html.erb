@@ -1,15 +1,18 @@
 <% provide(:title, "Home") %>
 
 <div class="center jumbotron">
-  <h1>Welcome to the tome_glimpse</h1>
+  <h1>bookJunkieにようこそ!</h1>
 
   <h2>
-    This is the home page for the
-    <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-    sample application.
+    あなただけの本棚を作りましょう。
   </h2>
-
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+  <h4>
+    このサービスでは、あなたの好きな本を本棚に追加することができます。
+  </h4>
+  <h4>
+    読んだ本を自由に追加して自分だけの本棚を作りましょう。
+  </h4>
+  <%= link_to "アカウント作成", signup_path, class: "btn btn-lg btn-primary" %>
 </div>
 
 <%= link_to image_tag("rails.png", alt: "Rails logo"),

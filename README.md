@@ -1,2 +1,2 @@
-# tome_glimpse
-Application tomeGlimpse
+# bookJunkie
+Application bookJunkie
