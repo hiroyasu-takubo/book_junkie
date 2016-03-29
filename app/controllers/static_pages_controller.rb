@@ -8,6 +8,7 @@ class StaticPagesController < ApplicationController
   def about
   end
 
+  # delete this action after 
   def contact
   end
 end

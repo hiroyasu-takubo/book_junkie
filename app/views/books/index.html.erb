@@ -1,0 +1,19 @@
+<% provide(:title, "Log in") %>
+<h1>本の一覧</h1>
+
+<div class="row">
+  <ul class="users">
+    <% @res.items.each do |item| %>
+      <li>
+        <div class="col-md-4">
+          <img src="<%= item.get('MediumImage/URL') %>" />
+        </div>
+        <div class="col-md-8">
+          <p><%= "タイトル: #{item.get('ItemAttributes/Title')}" %></p>
+          <p><%= "著者：#{item.get('ItemAttributes/Author')}" %></p>
+          <p><%= "出版社：#{item.get('ItemAttributes/Publisher')}" %></p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
