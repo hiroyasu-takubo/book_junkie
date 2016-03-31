@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ShelfsControllerTest < ActionController::TestCase
+class ShelfTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
