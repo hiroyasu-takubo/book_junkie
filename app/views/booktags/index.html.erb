@@ -1,0 +1,16 @@
+<% provide(:title, 'すべてのタグ') %>
+<h1>タグ一覧</h1>
+
+<div class="row">
+  <ul class="booktags">
+    <% @booktags.each do |booktag| %>
+      <li>
+        <p><%= booktag.name %>
+        <div class="right">
+          <%= link_to "削除", booktag, method: :delete, data: { confirm: "削除をしますか？" }  %>
+        </div>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+</div>
