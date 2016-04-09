@@ -8,10 +8,8 @@ Rails.application.routes.draw do
   post   'login'      => 'sessions#create'
   delete 'logout'     => 'sessions#destroy'
   resources :users
-  resources :shelves
   resources :booktags
   resources :tags
-  
   post   'booklist'   => 'books#index'
   get    'booksearch' => 'books#new'
   # resources :books
