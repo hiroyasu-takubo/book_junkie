@@ -10,8 +10,7 @@ Rails.application.routes.draw do
   resources :users
   resources :booktags
   resources :tags
-  post   'booklist'   => 'books#index'
-  get    'booksearch' => 'books#new'
-  # resources :books
-  
+  resources :books
+  post   'booksearch'   => 'books#index'
+  get    'booksearch' => 'books#booksearch'
 end
