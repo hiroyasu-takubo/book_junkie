@@ -17,7 +17,11 @@ class BooksController < ApplicationController
                                      )
       @books = []
       @res.item.each do |item|
-        book = Book.new(imte.)
+        book = Book.new
+        book.title = item.get('ItemAttributes/Title')
+        book.author = item.get('ItemAttributes/Author')
+        book.publisher = item.get('ItemAttributes/Publisher')
+        book.image = item.get('MediumImage/URL') 
       end
     end
   end
