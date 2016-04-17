@@ -9,7 +9,17 @@
           <img src="<%= item.get('MediumImage/URL') %>" />
         </div>
         <div class="col-md-8">
-          <p><%= "タイトル: #{item.get('ItemAttributes/Title')}" %></p>
+          <%= link_to "#{item.get('ItemAttributes/Title')}", _new %>
+          <!-- 画像 -->
+          <%= f.text_field :title, class: 'form-control' %>
+          <!-- その他の情報 -->
+          
+          <p>タイトル：<%= f.text_field :title, :readonly, class: 'form-control' %></p>
+         <p>著者：<%= f.text_field :author,  :readonly, class: 'form-control' %></p>
+         <p>出版社：<%= f.text_field :publisher,  :readonly, class: 'form-control' %></p>
+          
+          <p>    <%= f.label :remember_me, class: "checkbox inline" do %>
+            <%= "タイトル: #{item.get('ItemAttributes/Title')}" %></p>
           <p><%= "著者：#{item.get('ItemAttributes/Author')}" %></p>
           <p><%= "出版社：#{item.get('ItemAttributes/Publisher')}" %></p>
         </div>

@@ -13,7 +13,12 @@ class BooksController < ApplicationController
                                      :search_index   => 'Books',
                                      :response_group => 'Medium',
                                      :country        => 'jp'
-                                    )
+
+                                     )
+      @books = []
+      @res.item.each do |item|
+        book = Book.new(imte.)
+      end
     end
   end
 
