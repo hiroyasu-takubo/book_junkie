@@ -3,25 +3,18 @@
 
 <div class="row">
   <ul class="users">
-    <% @res.items.each do |item| %>
+    <% @books.each do |book| %>
       <li>
         <div class="col-md-4">
-          <img src="<%= item.get('MediumImage/URL') %>" />
+          <img src=<%= book.image %> />
         </div>
         <div class="col-md-8">
-          <%= link_to "#{item.get('ItemAttributes/Title')}", _new %>
-          <!-- 画像 -->
-          <%= f.text_field :title, class: 'form-control' %>
-          <!-- その他の情報 -->
           
-          <p>タイトル：<%= f.text_field :title, :readonly, class: 'form-control' %></p>
-         <p>著者：<%= f.text_field :author,  :readonly, class: 'form-control' %></p>
-         <p>出版社：<%= f.text_field :publisher,  :readonly, class: 'form-control' %></p>
-          
-          <p>    <%= f.label :remember_me, class: "checkbox inline" do %>
-            <%= "タイトル: #{item.get('ItemAttributes/Title')}" %></p>
-          <p><%= "著者：#{item.get('ItemAttributes/Author')}" %></p>
-          <p><%= "出版社：#{item.get('ItemAttributes/Publisher')}" %></p>
+          <!-- <p>タイトル：<%= book.title %></p> -->
+          <%= link_to book.title, book_path(book) %>
+          <link>
+          <p>著者：<%= book.author %></p>
+          <p>出版社：<%= book.publisher %></p>
         </div>
       </li>
     <% end %>
