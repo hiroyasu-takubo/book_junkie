@@ -7,7 +7,7 @@ class CreateBooks < ActiveRecord::Migration
       t.string :title
       t.string :author
       t.string :publisher
-      t.binary :image
+      t.string :image
 
       t.timestamps null: false
     end
