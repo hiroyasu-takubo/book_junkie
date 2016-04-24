@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   resources :booktags
   resources :tags
   resources :books
-  resources :search_items
   resources :searches
   post   'booksearch'   => 'search_items#index'
   get    'booksearch' => 'books#booksearch'
