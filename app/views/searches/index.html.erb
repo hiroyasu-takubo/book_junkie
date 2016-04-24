@@ -1,0 +1,19 @@
+<% provide(:title, "本の検索結果") %>
+<h1>本の検索結果</h1>
+
+<div class="row">
+  <ul class="users">
+    <% @searches.each do |search| %>
+      <li>
+        <div class="col-md-4">
+          <img src=<%= search.image %> />
+        </div>
+        <div class="col-md-8">
+          <p>タイトル：<%= search.title %></p>
+          <p>著者：<%= search.author %></p>
+          <p>出版社：<%= search.publisher %></p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

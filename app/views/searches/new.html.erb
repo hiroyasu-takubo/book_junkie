@@ -1,7 +1,7 @@
 <% provide(:title, "本の検索") %>
 <h1>本の検索</h1>
 
-<%= form_for @search_item, url: search_items_path, method: 'get', html: {class: 'form-horizontal'}  do |f| %>
+<%= form_for @search, url: searches_path, method: 'get', html: {class: 'form-horizontal'}  do |f| %>
 
   <div class="form-group">
     <div class="col-md-2">

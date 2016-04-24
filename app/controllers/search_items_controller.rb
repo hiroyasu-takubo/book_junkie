@@ -1,7 +1,7 @@
 # coding: utf-8
 class SearchItemsController < ApplicationController
   def index
-    item_name = params[:searchitem][:keyword]
+    item_name = params[:searchitems][:keyword]
 
     if item_name.blank?
       flash.now[:danger] = '本の名前を入力してください'
@@ -26,6 +26,8 @@ class SearchItemsController < ApplicationController
   end
 
   def new
+    @search_item = SearchItem.new
+    
   end
 
 end
