@@ -9,12 +9,12 @@
           <img src=<%= search.image %> />
         </div>
         <div class="col-md-8">
-          <%= link_to "詳細情報", new_book_path %>
+          <%= link_to "詳細情報", search_detail_path(search, search: search_to_hash(search)) %>
           <p>タイトル：<%= search.title %></p>
           <p>著者：<%= search.author %></p>
           <p>出版社：<%= search.publisher %></p>
         </div>
       </li>
-    <% end %>
+      <% end %>
   </ul>
 </div>

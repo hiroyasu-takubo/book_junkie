@@ -6,11 +6,11 @@ class SearchesController < ApplicationController
     if searchword.blank?
       flash.now[:danger] = '本の名前を入力してください'
       # DBと紐付いている時は必要なかった。初期化しない方法はある？
-      @search = Search.new("",
-                           "",
-                           "",
-                           "",
-                           "")
+      @search = Search.new(title: '',
+                           author: '',
+                           publisher: '',
+                           image: '',
+                           keyword: '')
       render 'new'
     else
       res = Amazon::Ecs.item_search(searchword,
@@ -20,26 +20,32 @@ class SearchesController < ApplicationController
                                      )
       @searches = []
       res.items.each do |item|
-        search = Search.new(
-          item.get('ItemAttributes/Title'),
-          item.get('ItemAttributes/Author'),
-          item.get('ItemAttributes/Publisher'),
-          item.get('MediumImage/URL'),
-          searchword
-        )
+        search = Search.new({title: item.get('ItemAttributes/Title'),
+                             author: item.get('ItemAttributes/Author'),
+                             publisher: item.get('ItemAttributes/Publisher'),
+                             image: item.get('MediumImage/URL'),
+                             keyword: searchword
+                            })
         @searches << search
       end
     end
-    # render :text => params
-    # render :text => params[:search][:keyword]
-    # render :text => searchword
   end
 
   def new
-    @search = Search.new("",
-                         "",
-                         "",
-                         "",
-                         "")
+    @search = Search.new(title: '',
+                         author: '',
+                         publisher: '',
+                         image: '',
+                         keyword: '')
+  end
+
+  def search_detail
+    @search = Search.new(title: params[:search][:title],
+                         author: params[:search][:author],
+                         publisher: params[:search][:publisher],
+                         image: params[:search][:image],
+                         keyword: params[:search][:keyword]
+                        )
+    # render text: params
   end
 end
