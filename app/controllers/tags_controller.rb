@@ -10,7 +10,7 @@ class TagsController < ApplicationController
   end
 
   def create
-    @tag = Tag.new(tag_params)
+    @tag = current_user.tags.build(tag_params)
     if @tag.save
       flash[:success] = "タグが作成されました。"
       redirect_to tags_url
