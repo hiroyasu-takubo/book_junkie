@@ -3,15 +3,18 @@
 
 <div class="row">
   <ul class="users">
-    <% @res.items.each do |item| %>
+    <% @books.each do |book| %>
       <li>
         <div class="col-md-4">
-          <img src="<%= item.get('MediumImage/URL') %>" />
+          <img src=<%= book.image %> />
         </div>
         <div class="col-md-8">
-          <p><%= "タイトル: #{item.get('ItemAttributes/Title')}" %></p>
-          <p><%= "著者：#{item.get('ItemAttributes/Author')}" %></p>
-          <p><%= "出版社：#{item.get('ItemAttributes/Publisher')}" %></p>
+          
+          <!-- <p>タイトル：<%= book.title %></p> -->
+          <%= link_to book.title, book_path(book) %>
+          <link>
+          <p>著者：<%= book.author %></p>
+          <p>出版社：<%= book.publisher %></p>
         </div>
       </li>
     <% end %>

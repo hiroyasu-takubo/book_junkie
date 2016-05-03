@@ -1,0 +1,24 @@
+<% provide(:title, "本詳細情報") %>
+<h1>本詳細情報</h1>
+<div class="row">
+  <div class="col-md-4">
+    <p>
+      <img src=<%= @search.image %> />
+    </p>
+  </div>
+  <div class="col-md-8">
+    <p>
+      <%= @search.title %>
+    </p>
+    <p>
+      <%= @search.author %>
+    </p>
+    <p>
+      <%= @search.publisher %>
+    </p>
+    <p>
+      登録タグ
+      <%= link_to "登録", new_book_path(search, search: search_to_hash(@search) ) %>
+    </p >      
+  </div>
+</div>

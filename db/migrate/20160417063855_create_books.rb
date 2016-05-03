@@ -7,9 +7,11 @@ class CreateBooks < ActiveRecord::Migration
       t.string :title
       t.string :author
       t.string :publisher
-      t.binary :image
+      t.string :image
 
       t.timestamps null: false
     end
+    add_index :books, [:user_id]
+    add_index :booktags, [:user_id, :tag_id]
   end
 end

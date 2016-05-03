@@ -1,0 +1,3 @@
+class BooktagsController < ApplicationController
+
+end
