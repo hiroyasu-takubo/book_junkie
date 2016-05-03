@@ -1,19 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+Ruby:
   user_id: 1
-  tag_id: 1
-  asin: MyString
-  title: MyString
-  author: MyString
-  publisher: MyString
-  image: 
+  asin: asin
+  title: たのしいRuby 第5版
+  author: 高橋 征義
+  publisher: SBクリエイティブ
+  image: http://ecx.images-amazon.com/images/I/51XdQhacD-L._SL160_.jpg
 
-two:
+Haskell:
   user_id: 1
-  tag_id: 1
-  asin: MyString
-  title: MyString
-  author: MyString
-  publisher: MyString
-  image: 
+  asin: asin
+  title: すごいHaskellたのしく学ぼう!
+  author: Miran Lipovača
+  publisher: オーム社
+  image: http://ecx.images-amazon.com/images/I/51P6NdS4IGL._SL160_.jpg

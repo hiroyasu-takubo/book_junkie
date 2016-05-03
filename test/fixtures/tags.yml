@@ -1,3 +1,7 @@
+all:
+  name: all
+  user_id: 1
+
 Haskell:
   name: Haskell
   user_id: 1
@@ -5,3 +9,12 @@ Haskell:
 Java:
   name: Java
   user_id: 1
+
+Ruby:
+  name: Ruby
+  user_id: 1
+
+program:
+  name: program
+  user_id: 1
+  
