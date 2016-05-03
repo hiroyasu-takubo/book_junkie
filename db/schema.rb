@@ -15,15 +15,16 @@ ActiveRecord::Schema.define(version: 20160417063855) do
 
   create_table "books", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "tag_id"
     t.string   "asin"
     t.string   "title"
     t.string   "author"
     t.string   "publisher"
-    t.binary   "image"
+    t.string   "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "books", ["user_id"], name: "index_books_on_user_id"
 
   create_table "booktags", force: :cascade do |t|
     t.integer  "book_id"
