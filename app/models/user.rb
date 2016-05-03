@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :microposts
   has_many :books
   has_many :tags
+  has_many :book_tags, through: :tags
   before_save { self.email = email.downcase }
 
   validates :name,  presence: true, length: { maximum: 50 }
