@@ -18,9 +18,7 @@
     </p>
     <p>
       登録タグ
-      <%= link_to "登録", search_detail_path(search, search: search_to_hash(@search)) %>
-      <%= link_to "削除", search_detail_path(search, search: search_to_hash(search)) %>
-    </p
-       >      
+      <%= link_to "登録", new_book_path(search, search: search_to_hash(@search) ) %>
+    </p >      
   </div>
 </div>

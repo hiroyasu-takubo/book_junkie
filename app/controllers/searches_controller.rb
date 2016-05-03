@@ -40,12 +40,5 @@ class SearchesController < ApplicationController
   end
 
   def search_detail
-    @search = Search.new(title: params[:search][:title],
-                         author: params[:search][:author],
-                         publisher: params[:search][:publisher],
-                         image: params[:search][:image],
-                         keyword: params[:search][:keyword]
-                        )
-    # render text: params
   end
 end

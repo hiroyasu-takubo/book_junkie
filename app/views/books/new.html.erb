@@ -1,3 +1,36 @@
 <% provide(:title, "本の登録") %>
 <h1>本の登録</h1>
 
+<%= form_for @book, html: {class: 'form-horizontal'}  do |f| %>
+  <div class="col-md-4">
+    <img src=<%= @book.image %> />
+  </div>
+  <div class="col-md-8">
+    <p>タイトル：<%= @book.title %></p>
+    <p>著者：<%= @book.author %></p>
+    <p>出版社：<%= @book.publisher %></p>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-md-2">
+      <%= f.hidden_field :title, readonly: true, class: 'form-control' %>
+      <%= f.hidden_field :author, readonly: true, class: 'form-control' %>
+      <%= f.hidden_field :publisher, readonly: true, class: 'form-control' %>
+      <%= f.hidden_field :image,  class: 'form-control' %>
+    </div>
+  </div>
+
+  <%= fiedls_for @tags, html: {class: 'form-horizontal'}  do |tag| %>
+    <div class="form-group">
+      <div class="col-md-2">
+        タグ名：<%= tag %>
+      </div>
+    </div>
+
+  <% end %>        
+  <div class="form-group">
+    <div class="col-md-2">
+      <%= f.submit "登録", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
