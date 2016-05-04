@@ -24,10 +24,10 @@ end
 Tag.create!(user_id: 1,
             name: "Ruby")
 
-Tag.create!(user_id: 2,
+Tag.create!(user_id: 1,
             name: "Haskell")
 
-Tag.create!(user_id: 3,
+Tag.create!(user_id: 1,
             name: "all")
 
 Book.create!(user_id: 1,
