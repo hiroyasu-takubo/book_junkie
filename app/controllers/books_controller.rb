@@ -8,9 +8,14 @@ class BooksController < ApplicationController
                     )
 
     @tags = Tag.where(user_id: current_user.id).order(id: :asc)
+    @booktag = Booktag.new
   end
 
   def create
     
+  end
+
+  def book_params
+    params.require(:book).permit(:title,:author, :publisher, :image, {tag_ids: []})
   end
 end
