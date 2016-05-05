@@ -22,16 +22,13 @@
     </div>
   </div>
 
-    <div class="form-group">
-      <div class="col-md-10">
-        <%= collection_check_boxes(:tag, :tag_ids, @tags, :id, :name) do |b| %>
-          <%= b.label {b.check_box + b.text}%>
-        <% end %>
-      </div>
-    </div>
+  <!-- TODO チェックボックスを横に並べる。 -->
+  <%= collection_check_boxes(:tag, :tag_ids, @tags, :id, :name) do |b| %>
+    <%= b.label(class: "checkbox inline") {b.check_box + b.text}%>
+  <% end %>
   
   <div class="form-group">
-    <div class="col-md-2">
+    <div class="col-md-2t">
       <%= f.submit "登録", class: "btn btn-primary" %>
     </div>
   </div>

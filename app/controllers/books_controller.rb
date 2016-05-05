@@ -12,7 +12,6 @@ class BooksController < ApplicationController
   end
 
   def create
-    
   end
 
   def book_params
