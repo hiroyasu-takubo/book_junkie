@@ -21,7 +21,7 @@ class TagsController < ApplicationController
   end
 
   def index
-    @tags = Tag.all
+    @tags = Tag.where(user_id: current_user.id)
   end
 
   def edit
