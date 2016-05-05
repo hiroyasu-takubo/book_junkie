@@ -20,6 +20,12 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
+    else
+      render 'new'
+    end
+
+    @tag = @user.tags.build(name: 'all')
+    if @tag.save
       flash[:success] = "Welcome to the bookJunkie"
       redirect_to @user
     else
