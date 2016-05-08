@@ -1,18 +1,16 @@
-<% provide(:title, "本の検索結果") %>
-<h1>本の検索結果</h1>
+<% provide(:title, "本の一覧") %>
+<h1>本の一覧</h1>
 
+<%= will_paginate %>
 <div class="row">
-  <ul class="users">
+  <ul class="books">
     <% @books.each do |book| %>
       <li>
         <div class="col-md-4">
           <img src=<%= book.image %> />
         </div>
         <div class="col-md-8">
-          
-          <!-- <p>タイトル：<%= book.title %></p> -->
-          <%= link_to book.title, book_path(book) %>
-          <link>
+          <p>タイトル：<%= book.title %></p>
           <p>著者：<%= book.author %></p>
           <p>出版社：<%= book.publisher %></p>
         </div>
@@ -20,3 +18,4 @@
     <% end %>
   </ul>
 </div>
+<%= will_paginate %>

@@ -51,6 +51,11 @@ class BooksController < ApplicationController
     @book = Book.find(params)
   end
 
+  def index
+    @user = User.find_by( id: current_user.id)
+    @books = @user.books.paginate(page: params[:page])
+  end
+
   private
 
   def book_params
