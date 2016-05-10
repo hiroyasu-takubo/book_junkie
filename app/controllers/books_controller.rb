@@ -26,7 +26,8 @@ class BooksController < ApplicationController
     end
     
     tag_ids = params[:tag][:tag_ids].select(&:present?)
-    
+
+    # 登録時にallタグを追加する。
     tag_all = Tag.find_by(user_id: current_user.id, name: 'all')
     tag_ids << tag_all[:id].to_s
     
@@ -48,7 +49,8 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params)
+    @book = Book.find(params[:id])
+    @booktags = @book.booktags.where.not(name: 'all')
   end
 
   def index
