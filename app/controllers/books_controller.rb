@@ -8,7 +8,7 @@ class BooksController < ApplicationController
                     )
 
     @tags = Tag.where(user_id: current_user.id).where.not(name: 'all').order(id: :asc)
-    @booktag = Booktag.new
+    @booktag = BookTag.new
   end
 
   def create
@@ -36,7 +36,7 @@ class BooksController < ApplicationController
     tag_hash = []
     tag_hash_array.each { |h| tag_hash << Hash[*h]}
     
-    @booktags = @book.booktags.build(tag_hash)
+    @booktags = @book.book_tags.build(tag_hash)
     
     @booktags.each do |booktag|
       unless booktag.save

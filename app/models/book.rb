@@ -1,4 +1,4 @@
 class Book < ActiveRecord::Base
-  has_many :booktags
   belongs_to :user
+  has_many :tags, through: :book_tags
 end
