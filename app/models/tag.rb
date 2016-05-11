@@ -4,4 +4,5 @@ class Tag < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 100 }
   belongs_to :user
   has_many :books, through: :booktags
+  has_many :booktags
 end

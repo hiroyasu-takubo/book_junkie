@@ -13,6 +13,7 @@ class BooksController < ApplicationController
   def create
     # TODO 検索方法を帰る。create_orupdateがいい？ 検索ならasinがいい。
     # TODO タグの削除方法の設計
+    # TODO associationの仕組みを使えば、もっと楽に実装できそう
     @book = Book.find_by(title: book_params[:title], user_id: current_user.id)
     
     if @book.blank?
@@ -49,7 +50,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    @gas = @book.tags.where.not(name: 'all')
+    @tags = @book.tags.where.not(name: 'all')
   end
 
   def index
