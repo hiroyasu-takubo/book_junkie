@@ -47,14 +47,14 @@ Book.create!(user_id: 1,
             )
 
 
-BookTag.create!(book_id: 1,
+Booktag.create!(book_id: 1,
                 tag_id: 1)
 
-BookTag.create!(book_id: 1,
+Booktag.create!(book_id: 1,
                 tag_id: 4)
 
-BookTag.create!(book_id: 2,
+Booktag.create!(book_id: 2,
                 tag_id: 1)
 
-BookTag.create!(book_id: 2,
+Booktag.create!(book_id: 2,
                 tag_id: 2)
