@@ -58,6 +58,23 @@ class BooksController < ApplicationController
     @books = @user.books.paginate(page: params[:page])
   end
 
+  def edit
+    @book = Book.find(params[:id])
+    # @tags = @book.tags.where.not(name: 'all')
+    @user = User.find(current_user.id)
+    @tags = @user.tags.where.not(name: 'all')
+  end
+    
+  def update
+    @book = Book.find(params[:id])
+    if @book.update_attributes(book_params)
+      flash[:success] = "本 #{@book.title}を更新しました"
+      redirect_to books_path
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def book_params
