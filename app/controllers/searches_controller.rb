@@ -13,21 +13,9 @@ class SearchesController < ApplicationController
                            keyword: '')
       render 'new'
     else
-      res = Amazon::Ecs.item_search(searchword,
-                                     :search_index   => 'Books',
-                                     :response_group => 'Medium',
-                                     :country        => 'jp'
-                                     )
-      @searches = []
-      res.items.each do |item|
-        search = Search.new({title: item.get('ItemAttributes/Title'),
-                             author: item.get('ItemAttributes/Author'),
-                             publisher: item.get('ItemAttributes/Publisher'),
-                             image: item.get('MediumImage/URL'),
-                             keyword: searchword
-                            })
-        @searches << search
-      end
+      search = Search.new
+      res = search.book_search(searchword)
+      @searches = search.search_result(res)
     end
   end
 
