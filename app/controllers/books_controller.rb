@@ -13,37 +13,20 @@ class BooksController < ApplicationController
   def create
     # TODO 検索方法を帰る。create_orupdateがいい？ 検索ならasinがいい。
     # TODO タグの削除方法の設計
-    # TODO associationの仕組みを使えば、もっと楽に実装できそう
-    @book = Book.find_by(title: book_params[:title], user_id: current_user.id)
+    @user = User.find(current_user.id)
+    @book = @user.books.find_by(title: book_params[:title])
     
     if @book.blank?
-      @book = Book.new(book_params)
+      @book = @user.books.build(book_params)
       
-      unless @book.save
+      if @book.save
+        flash[:success] = "本を登録しました。"
+        redirect_to @book
+      else
         flash[:danger] = "登録が失敗しました。"
         render 'new'
       end
     end
-    
-    # tag_ids = params[:tag][:tag_ids].select(&:present?)
-
-    # # 登録時にallタグを追加する。
-    
-    # tag_hashkey = [:tag_id] * tag_ids.size
-    # tag_hash_array = tag_hashkey.collect.zip(tag_ids)
-    # tag_hash = []
-    # tag_hash_array.each { |h| tag_hash << Hash[*h]}
-    
-    # @booktags = @book.booktags.build(tag_hash)
-    
-    # @booktags.each do |booktag|
-    #   unless booktag.save
-    #     render 'new'
-    #   end
-    # end
-    
-    flash[:success] = "本を登録しました。"
-    redirect_to @book
   end
 
   def show
