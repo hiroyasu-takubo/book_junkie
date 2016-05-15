@@ -25,6 +25,9 @@ Tag.create!(user_id: 1,
             name: "Ruby")
 
 Tag.create!(user_id: 1,
+            name: "Rails")
+
+Tag.create!(user_id: 1,
             name: "Haskell")
 
 Book.create!(user_id: 1,

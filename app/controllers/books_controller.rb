@@ -12,7 +12,7 @@ class BooksController < ApplicationController
 
   def create
     # TODO 検索方法を帰る。create_orupdateがいい？ 検索ならasinがいい。
-    # TODO タグの削除方法の設計
+    # 一意性チェックが聞いていない。モデルで実装。asinを取得するようにする。
     @user = User.find(current_user.id)
     @book = @user.books.find_by(title: book_params[:title])
     
