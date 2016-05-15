@@ -1,0 +1,24 @@
+  <div class="form-group">
+    <div class="col-md-4">
+      <img src=<%= book.image %> />
+    </div>
+    <div class="col-md-8">
+      <p>タイトル：<%= book.title %></p>
+      <p>著者：<%= book.author %></p>
+      <p>出版社：<%= book.publisher %></p>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-md-2">
+      <%= book.hidden_field :title, readonly: true, class: 'form-control' %>
+      <%= book.hidden_field :author, readonly: true, class: 'form-control' %>
+      <%= book.hidden_field :publisher, readonly: true, class: 'form-control' %>
+      <%= book.hidden_field :image,  class: 'form-control' %>
+    </div>
+  </div>
+
+  <!-- TODO チェックボックスを横に並べる。 -->
+  <%= book.collection_check_boxes(:tag_ids, @tags, :id, :name) do |b| %>
+    <%= b.label(class: "checkbox inline") {b.check_box + b.text}%>
+  <% end %>
