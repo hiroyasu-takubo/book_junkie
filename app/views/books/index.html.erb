@@ -10,8 +10,13 @@
           <img src=<%= book.image %> />
         </div>
         <div class="col-md-8">
-          <p><%= link_to "本の詳細", book %></p>
-          <p><%= link_to "本の編集", edit_book_path(book) %></p>
+          <p>
+            <%= link_to "本の詳細", book %>
+            |
+            <%= link_to "本の編集", edit_book_path(book) %>
+            |
+            <%= link_to "本の削除", book, method: :delete, data: {confirm: "削除をしますか？"}%>
+          </p>
           <p>タイトル：<%= book.title %></p>
           <p>著者：<%= book.author %></p>
           <p>出版社：<%= book.publisher %></p>
