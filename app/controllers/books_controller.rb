@@ -6,8 +6,8 @@ class BooksController < ApplicationController
                      publisher: params[:search][:publisher],
                      image: params[:search][:image]
                     )
-
-    @tags = Tag.where(user_id: current_user.id).where.not(name: 'all').order(id: :asc)
+    @user = User.find(current_user.id)
+    @tags = @user.tags.order(id: :asc)
   end
 
   def create
@@ -25,24 +25,22 @@ class BooksController < ApplicationController
       end
     end
     
-    tag_ids = params[:tag][:tag_ids].select(&:present?)
+    # tag_ids = params[:tag][:tag_ids].select(&:present?)
 
-    # 登録時にallタグを追加する。
-    tag_all = Tag.find_by(user_id: current_user.id, name: 'all')
-    tag_ids << tag_all[:id].to_s
+    # # 登録時にallタグを追加する。
     
-    tag_hashkey = [:tag_id] * tag_ids.size
-    tag_hash_array = tag_hashkey.collect.zip(tag_ids)
-    tag_hash = []
-    tag_hash_array.each { |h| tag_hash << Hash[*h]}
+    # tag_hashkey = [:tag_id] * tag_ids.size
+    # tag_hash_array = tag_hashkey.collect.zip(tag_ids)
+    # tag_hash = []
+    # tag_hash_array.each { |h| tag_hash << Hash[*h]}
     
-    @booktags = @book.booktags.build(tag_hash)
+    # @booktags = @book.booktags.build(tag_hash)
     
-    @booktags.each do |booktag|
-      unless booktag.save
-        render 'new'
-      end
-    end
+    # @booktags.each do |booktag|
+    #   unless booktag.save
+    #     render 'new'
+    #   end
+    # end
     
     flash[:success] = "本を登録しました。"
     redirect_to @book
@@ -50,19 +48,18 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    @tags = @book.tags.where.not(name: 'all')
+    @tags = @book.tags.all
   end
 
   def index
-    @user = User.find_by( id: current_user.id)
+    @user = User.find_by(id: current_user.id)
     @books = @user.books.paginate(page: params[:page])
   end
 
   def edit
     @book = Book.find(params[:id])
-    # @tags = @book.tags.where.not(name: 'all')
     @user = User.find(current_user.id)
-    @tags = @user.tags.where.not(name: 'all')
+    @tags = @user.tags.all
   end
     
   def update

@@ -2,7 +2,8 @@
 <h1>本の登録</h1>
 
 <%= form_for @book, html: {class: 'form-horizontal'}  do |f| %>
-  <%= render 'bookform', book: @book %>  
+  <%= render partial: 'bookinfo', locals: { book: @book } %>
+  <%= render partial: 'bookform', locals: { f: f } %>
   <div class="form-group">
     <div class="col-md-2t">
       <%= f.submit "登録", class: "btn btn-primary" %>

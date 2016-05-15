@@ -27,9 +27,6 @@ Tag.create!(user_id: 1,
 Tag.create!(user_id: 1,
             name: "Haskell")
 
-Tag.create!(user_id: 1,
-            name: "all")
-
 Book.create!(user_id: 1,
              asin: "asin",
              title: "たのしいRuby 第5版",
@@ -46,15 +43,8 @@ Book.create!(user_id: 1,
              image: "http://ecx.images-amazon.com/images/I/51P6NdS4IGL._SL160_.jpg"
             )
 
-
-Booktag.create!(book_id: 1,
-                tag_id: 1)
-
 Booktag.create!(book_id: 1,
                 tag_id: 4)
-
-Booktag.create!(book_id: 2,
-                tag_id: 1)
 
 Booktag.create!(book_id: 2,
                 tag_id: 2)
