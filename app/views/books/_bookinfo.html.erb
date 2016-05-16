@@ -1,5 +1,5 @@
 <div class="col-md-4">
-  <img src=<%= book.image %> />
+  <%= image_tag book.image.url if book.image? %>
 </div>
 <div class="col-md-8">
   <p>タイトル：<%= book.title %></p>
