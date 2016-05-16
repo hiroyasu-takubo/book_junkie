@@ -1,9 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token
-  has_many :microposts
-  has_many :books
-  has_many :tags
-  has_many :book_tags, through: :tags
+  has_many :books, dependent: :destroy
+  has_many :tags, dependent: :destroy
   before_save { self.email = email.downcase }
 
   validates :name,  presence: true, length: { maximum: 50 }
