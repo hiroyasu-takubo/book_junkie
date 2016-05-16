@@ -6,8 +6,10 @@ class Book < ActiveRecord::Base
   has_many :tags, through: :booktags
   has_many :booktags
   mount_uploader :image, PictureUploader
-  validate :image_size
-
+  validates :user_id, presence: true
+  validates :asin, presence: true, uniquness: { case_sensitive: true }
+  validates :image_size
+  
   public
 
   def save_image(url)
