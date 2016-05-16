@@ -7,7 +7,7 @@ class Book < ActiveRecord::Base
   has_many :booktags
   mount_uploader :image, PictureUploader
   validates :user_id, presence: true
-  validates :asin, presence: true, uniquness: { case_sensitive: true }
+  validates :asin, presence: true, uniqueness: { case_sensitive: true }
   validates :image_size
   
   public
