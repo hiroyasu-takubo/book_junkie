@@ -1,5 +1,7 @@
 # coding: utf-8
 class TagsController < ApplicationController
+  before_aciton :logged_in_user, only: [:create, :destroy]
+  before_aciton :correct_user, only: :destroy
 
   def new
     @tag = Tag.new
@@ -49,5 +51,11 @@ class TagsController < ApplicationController
 
   def tag_params
     params.require(:tag).permit(:user_id, :name)
+  end
+
+  def correct_user
+    @tag = current_user.tags.find_by(id: params[:id])
+    redirect_to root_url if @tag.nil?
+    
   end
 end

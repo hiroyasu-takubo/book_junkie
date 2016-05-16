@@ -1,5 +1,8 @@
 # coding: utf-8
 class BooksController < ApplicationController
+  before_aciton :logged_in_user, only: [:create, :destroy, :update]
+  before_aciton :correct_user, only: [:destroy, :update]
+
   def new
     @book = Book.new(title: params[:search][:title],
                      author: params[:search][:author],
@@ -67,4 +70,8 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title,:author, :publisher, :image, { tag_ids: [] })
   end
 
+  def correct_user
+    @book = current_user.books.find_by(id: params[:id])
+    redirect_to root_url if @book.nil?
+  end
 end
