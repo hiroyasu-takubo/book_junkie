@@ -46,7 +46,7 @@ class TagsController < ApplicationController
     flash[:success] = "タグを削除しました。"
     redirect_to tags_url
   end
- 
+
   private
 
   def tag_params
