@@ -1,14 +1,14 @@
 <% provide(:title, "本の検索") %>
 <h1>本の検索</h1>
 
-<%= form_for :tag_earch, url: searches_path, method: 'get', html: {class: 'form-horizontal'}  do |f| %>
+<%= form_for :tag_search, url: tag_search_index_path, method: 'get', html: {class: 'form-horizontal'}  do |f| %>
 
   <div class="form-group">
     <div class="col-md-2">
       <%= f.label :name %>
     </div>
     <div class="col-md-6">
-      <%= f.collection_select :name, current_user.tags ,:id, name %>
+      <%= f.collection_select :tag_ids, current_user.tags ,:id, :name %>
     </div>
   </div>
 

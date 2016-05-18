@@ -1,20 +1,19 @@
-<% provide(:title, "本の検索結果") %>
-<h1>本の検索結果</h1>
+<% provide(:title, "タグの検索結果") %>
+<h1>タグの検索結果</h1>
 
 <div class="row">
   <ul class="users">
-    <% @searches.each do |search| %>
+    <% @books.each do |book| %>
       <li>
         <div class="col-md-4">
-          <img src=<%= search.image %> />
+          <img src=<%= book.image %> />
         </div>
         <div class="col-md-8">
-          <%= link_to "タグの登録", new_book_path(search, search: search_to_hash(search)) %>
-          <p>タイトル：<%= search.title %></p>
-          <p>著者：<%= search.author %></p>
-          <p>出版社：<%= search.publisher %></p>
+          <p>タイトル：<%= book.title %></p>
+          <p>著者：<%= book.author %></p>
+          <p>出版社：<%= book.publisher %></p>
         </div>
       </li>
-      <% end %>
+    <% end %>
   </ul>
 </div>
