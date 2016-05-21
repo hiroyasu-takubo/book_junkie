@@ -70,7 +70,7 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title,:author, :publisher, :image, { tag_ids: [] })
   end
 
-  def correct_user
+  def correct_user 
     @book = current_user.books.find_by(id: params[:id])
     redirect_to root_url if @book.nil?
   end
