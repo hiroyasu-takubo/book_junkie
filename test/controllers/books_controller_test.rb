@@ -4,7 +4,6 @@ class BooksControllerTest < ActionController::TestCase
 
   def setup
     @book = books(:Ruby)
-    # @regsiterdBook
     @user = users(:hiro)
     @other_user = users(:archer)
   end

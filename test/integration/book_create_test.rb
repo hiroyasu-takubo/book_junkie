@@ -3,7 +3,7 @@ require 'test_helper'
 class BookCreateTest < ActionDispatch::IntegrationTest
 
   def setup
-      @user = users(:michael)
+      @user = users(:hiro)
   end
 
   test 'should create book' do
