@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 Ruby:
-  user_id: 1
+  user: hiro
   asin: asin
   title: たのしいRuby 第5版
   author: 高橋 征義
@@ -9,7 +9,7 @@ Ruby:
   image: http://ecx.images-amazon.com/images/I/51XdQhacD-L._SL160_.jpg
 
 Haskell:
-  user_id: 1
+  user: hiro
   asin: asin
   title: すごいHaskellたのしく学ぼう!
   author: Miran Lipovača

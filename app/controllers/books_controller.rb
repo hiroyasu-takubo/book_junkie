@@ -1,7 +1,7 @@
 # coding: utf-8
 class BooksController < ApplicationController
-  before_aciton :logged_in_user, only: [:create, :destroy, :update]
-  before_aciton :correct_user, only: [:destroy, :update]
+  before_aciton :logged_in_user, only: [:new, :destroy, :edit]
+  before_aciton :correct_user, only: [:destroy, :update, :create]
 
   def new
     @book = Book.new(title: params[:search][:title],
