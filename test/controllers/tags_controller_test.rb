@@ -29,7 +29,7 @@ class TagsControllerTest < ActionController::TestCase
   end
 
   test "should render create when create fail" do
-    post :create, tag: { use_id: 1,
+    post :create, tag: { user_id: 1,
                          name: "" }
     assert_not flash.empty?
     assert_template "tags/new"
