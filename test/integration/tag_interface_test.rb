@@ -18,7 +18,7 @@ class TagInterfaceTest < ActionDispatch::IntegrationTest
     end
     
     follow_redirect!
-    assert_template 'tags/show'
+    assert_template 'tags/index'
   end
 
   test 'should fail to create tag' do
@@ -31,7 +31,7 @@ class TagInterfaceTest < ActionDispatch::IntegrationTest
       post tags_path, tag: { name: ''}
     end
 
-    assert_template 'tags/edit'
+    assert_template 'tags/new'
   end
   
   test 'should update tag' do
@@ -49,9 +49,9 @@ class TagInterfaceTest < ActionDispatch::IntegrationTest
     patch tag_path, tag: { name: tag }
 
     @tag.reload
-    assert_equal name, @tag.name
+    assert_equal tag, @tag.name
 
-    assert_template 'tags/show'
+    assert_template 'tags/index'
   end
 
   test 'should fail to update tag' do
@@ -66,7 +66,6 @@ class TagInterfaceTest < ActionDispatch::IntegrationTest
     patch tag_path, tag: { name: '' }
 
     assert_template 'tags/edit'
-    
   end
 
   test 'should destroy tag' do
@@ -77,7 +76,8 @@ class TagInterfaceTest < ActionDispatch::IntegrationTest
     assert_select 'a', text: '削除'
 
     assert_difference 'Tag.count', -1 do
-      delete tags_path @tag
+      delete tag_path(@tag)
     end
+    assert_template 'tags/edit'
   end 
 end

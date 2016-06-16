@@ -1,9 +1,7 @@
 # coding: utf-8
 class TagsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
-  before_action :logged_in_user, only: [:edit, :update, :index, :destroy]
-  before_action :correct_user, only: [:edit, :update]
-  before_action :correct_user, only: :destroy
+  before_action :logged_in_user, only: [:new, :create, :edit, :update, :index, :destroy]
+  before_action :correct_user, only: [:edit, :destroy]
 
   def new
     @tag = Tag.new
