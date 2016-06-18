@@ -1,5 +1,7 @@
 # coding: utf-8
 class TagSearchController < ApplicationController
+  before_action :logged_in_user, only: [:new, :index]
+  
   def new
   end
 
@@ -13,6 +15,6 @@ class TagSearchController < ApplicationController
       @books = tag.books
       render 'index'
     end
-    # render text: params
   end
+
 end
