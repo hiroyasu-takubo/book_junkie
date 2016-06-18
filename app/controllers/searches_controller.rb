@@ -1,5 +1,7 @@
 # coding: utf-8
 class SearchesController < ApplicationController
+  before_action :logged_in_user, only: [:new, :index, :serach_detail]
+  
   def index
     searchword = params[:search][:keyword]
 
