@@ -51,6 +51,7 @@ class TagInterfaceTest < ActionDispatch::IntegrationTest
     @tag.reload
     assert_equal tag, @tag.name
 
+    follow_redirect!
     assert_template 'tags/index'
   end
 
@@ -60,7 +61,7 @@ class TagInterfaceTest < ActionDispatch::IntegrationTest
     get tags_path
     assert_template 'tags/index'
 
-    get edit_tag_path(@user)
+    get edit_tag_path(@tag)
     assert_template 'tags/edit'
 
     patch tag_path, tag: { name: '' }
@@ -78,6 +79,8 @@ class TagInterfaceTest < ActionDispatch::IntegrationTest
     assert_difference 'Tag.count', -1 do
       delete tag_path(@tag)
     end
-    assert_template 'tags/edit'
+
+    follow_redirect!
+    assert_template 'tags/index'
   end 
 end
