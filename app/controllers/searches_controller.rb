@@ -1,6 +1,6 @@
 # coding: utf-8
 class SearchesController < ApplicationController
-  before_action :logged_in_user, only: [:new, :index, :serach_detail]
+  before_action :logged_in_user, only: [:new, :index]
   
   def index
     searchword = params[:search][:keyword]
@@ -27,8 +27,5 @@ class SearchesController < ApplicationController
                          publisher: '',
                          image: '',
                          keyword: '')
-  end
-
-  def search_detail
   end
 end
