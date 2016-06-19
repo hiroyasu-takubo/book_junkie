@@ -8,6 +8,6 @@
   </div>
 
   <!-- TODO チェックボックスを横に並べる。 -->
-  <%= f.collection_check_boxes(:tag_ids, @tags, :id, :name) do |b| %>
+  <%= f.collection_check_boxes(:tag_ids, @user.tags.order(id: :asc), :id, :name) do |b| %>
     <%= b.label(class: "checkbox inline") {b.check_box + b.text}%>
   <% end %>
