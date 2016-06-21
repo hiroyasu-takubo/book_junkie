@@ -4,5 +4,5 @@ class Book < ActiveRecord::Base
   has_many :tags, through: :booktags, dependent: :destroy
   has_many :booktags, dependent: :destroy
   validates :user_id, presence: true
-  validates :asin, presence: true, uniqueness: { case_sensitive: true }
+  # validates :asin, presence: true, uniqueness: { case_sensitive: true }
 end

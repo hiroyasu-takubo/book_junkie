@@ -53,19 +53,6 @@ class BooksControllerTest < ActionController::TestCase
     assert_redirected_to login_url
   end
 
-  test 'should create book' do
-    log_in_as @user
-    assert_difference 'Book.count', 1 do
-      post :create ,book: { asin: '',
-                            title: 'Ruby book',
-                            author: 'foo',
-                            publisher: 'test company',
-                            image: 'aaa',
-                          }
-    end
-　 assert_template 'show'
-  end
-
   test 'should redirect destroy when logged in as wrong user' do
     log_in_as @otheruser
     assert_no_difference 'Book.count' do
