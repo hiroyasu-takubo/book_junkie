@@ -9,12 +9,11 @@ class TagSearchController < ApplicationController
     tag = Tag.find_by(id: params[:tag_search][:tag_ids])
     
     if tag.books.exists?
-      flash[:danger] = 'タグに関連する本がありません。'
-      render 'new'
-    else
       @books = tag.books
       render 'index'
+    else
+      flash[:danger] = 'タグに関連する本がありません。'
+      render 'new'
     end
   end
-
 end

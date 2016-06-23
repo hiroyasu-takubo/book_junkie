@@ -7,7 +7,7 @@ class TagInterfaceTest < ActionDispatch::IntegrationTest
     @tag = tags(:Ruby)
   end
 
-  test 'should create tag' do
+  test 'tag interface test' do
     log_in_as(@user)
     
     get new_tag_path
