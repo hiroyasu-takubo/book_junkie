@@ -13,10 +13,24 @@ class SearchesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'should render new when not logged in' do
+  test 'should redirect new when not logged in' do
     get :new
     assert_not flash.empty?
     assert_redirected_to login_url
+  end
+
+  test 'should render new when keyword is blank' do
+    log_in_as(@user)
+    get :index, search: { keyword: '' }
+    assert_not flash.empty?
+    assert_redirected_to login_url
+  end  
+
+  test 'should get index' do
+    log_in_as(@user)
+    get :index, search: { keyword: 'Ruby' }
+    # get :index
+    assert_template 'index'
   end
 
   test 'should redirect index when not logged in' do
