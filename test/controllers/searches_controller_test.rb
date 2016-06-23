@@ -23,7 +23,7 @@ class SearchesControllerTest < ActionController::TestCase
     log_in_as(@user)
     get :index, search: { keyword: '' }
     assert_not flash.empty?
-    assert_redirected_to login_url
+    assert_template 'new'
   end  
 
   test 'should get index' do
