@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'test_helper'
 
 class BookCreateTest < ActionDispatch::IntegrationTest
@@ -26,5 +27,23 @@ class BookCreateTest < ActionDispatch::IntegrationTest
                                           }
     end
     assert_template 'books/show'
+  end
+
+  test 'should search book' do
+    log_in_as(@user)
+
+    get new_search_path
+    assert_template 'searches/new'
+
+    get searches_path, search: { keyword: 'Ruby' }
+    assert_template 'searches/index'
+
+    # TODO 画面のリンクをクリックすることはできない？また別のフレームワークが必要？
+    get new_book_path, search: { title: 'Ruby',
+                                 author: 'author',
+                                 publisher: 'publisher',
+                                 image: 'http://dummyimage.com/100x100.jpg'
+                               }
+    assert_template 'books/new'
   end
 end

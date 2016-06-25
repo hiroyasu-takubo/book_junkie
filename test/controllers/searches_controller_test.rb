@@ -29,7 +29,12 @@ class SearchesControllerTest < ActionController::TestCase
   test 'should get index' do
     log_in_as(@user)
     get :index, search: { keyword: 'Ruby' }
-    # get :index
+    assert_template 'index'
+  end
+
+  test 'should get index when no data founded' do
+    log_in_as(@user)
+    get :index, search: { keyword: '99999999999999999999999' }
     assert_template 'index'
   end
 
