@@ -40,7 +40,7 @@ class TagsControllerTest < ActionController::TestCase
       post :create, tag: { name: '' }
     end
     assert_not flash.empty?
-    assert_template
+    assert_redirected_to login_url
   end
   
   test 'should get edit' do
