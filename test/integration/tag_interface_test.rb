@@ -13,38 +13,23 @@ class TagInterfaceTest < ActionDispatch::IntegrationTest
     get new_tag_path
     assert_template 'tags/new'
     
+    # 登録のテスト
+    tag = 'foobar'
+    
     assert_difference 'Tag.count', 1 do
-      post tags_path, tag: { name: 'foobar'}
+      post tags_path, tag: { name: tag }
     end
     
     follow_redirect!
     assert_template 'tags/index'
-  end
-
-  test 'should fail to create tag' do
-    log_in_as(@user)
-
-    get new_tag_path
-    assert_template 'tags/new'
-
-    assert_no_difference 'Tag.count' do
-      post tags_path, tag: { name: ''}
-    end
-
-    assert_template 'tags/new'
-  end
-  
-  test 'should update tag' do
-    log_in_as(@user)
-    
-    get tags_path
-    assert_template 'tags/index'
     assert_select 'a', text: '編集'
-    
+    assert_select 'a', text: '削除'
+
+    # 更新のテスト
     get edit_tag_path(@tag)
     assert_template 'tags/edit'
-
-    tag = 'foobar'
+    
+    tag = 'hogehoge'
 
     patch tag_path, tag: { name: tag }
 
@@ -53,28 +38,10 @@ class TagInterfaceTest < ActionDispatch::IntegrationTest
 
     follow_redirect!
     assert_template 'tags/index'
-  end
 
-  test 'should fail to update tag' do
-    log_in_as(@user)
-
+    # 削除のテスト
     get tags_path
     assert_template 'tags/index'
-
-    get edit_tag_path(@tag)
-    assert_template 'tags/edit'
-
-    patch tag_path, tag: { name: '' }
-
-    assert_template 'tags/edit'
-  end
-
-  test 'should destroy tag' do
-    log_in_as(@user)
-
-    get tags_path
-    assert_template 'tags/index'
-    assert_select 'a', text: '削除'
 
     assert_difference 'Tag.count', -1 do
       delete tag_path(@tag)
@@ -82,5 +49,5 @@ class TagInterfaceTest < ActionDispatch::IntegrationTest
 
     follow_redirect!
     assert_template 'tags/index'
-  end 
+  end
 end
