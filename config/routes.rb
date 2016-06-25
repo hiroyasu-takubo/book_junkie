@@ -8,9 +8,8 @@ Rails.application.routes.draw do
   post   'login'         => 'sessions#create'
   delete 'logout'        => 'sessions#destroy'
   resources :users
-  resources :booktags
   resources :tags
   resources :books
-  resources :searches
-  resources :tag_search
+  resources :searches, only: [:new, :index]
+  resources :tag_search, only: [:new, :index]
 end
