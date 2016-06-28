@@ -12,7 +12,8 @@ class BooksControllerTest < ActionController::TestCase
   
   test 'should get new' do
     log_in_as(@user)
-    get :new, search: { title: 'Ruby',
+    get :new, search: { asin: '111',
+                        title: 'Ruby',
                         author: 'author',
                         publisher: 'publisher',
                         image: 'http://dummyimage.com/100x100.jpg'
@@ -21,7 +22,8 @@ class BooksControllerTest < ActionController::TestCase
   end
 
   test 'should redirect new when not logged in' do
-    get :new, search: { title: 'Ruby',
+    get :new, search: { asin: '111',
+                        title: 'Ruby',
                         author: 'author',
                         publisher: 'publisher',
                         image: 'http://dummyimage.com/100x100.jpg'

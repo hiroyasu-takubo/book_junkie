@@ -17,7 +17,6 @@ class TagsController < ApplicationController
       flash[:success] = "タグが作成されました。"
       redirect_to tags_url
     else
-      flash[:danger] = "タグの作成が失敗しました。"
       render 'new'
     end
   end

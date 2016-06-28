@@ -2,7 +2,7 @@
 
 Ruby:
   user: hiro
-  asin: asin
+  asin: a111
   title: たのしいRuby 第5版
   author: 高橋 征義
   publisher: SBクリエイティブ
@@ -10,7 +10,7 @@ Ruby:
 
 Haskell:
   user: hiro
-  asin: asin
+  asin: b222
   title: すごいHaskellたのしく学ぼう!
   author: Miran Lipovača
   publisher: オーム社

@@ -1,6 +1,7 @@
 module SearchesHelper
   def search_to_hash(search)
-    {title: search.title ,
+    {asin: search.asin,
+     title: search.title ,
      author: search.author,
      publisher: search.publisher,
      image: search.image,

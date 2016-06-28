@@ -4,7 +4,8 @@ class BooksController < ApplicationController
   before_action :correct_user, only: :destroy
 
   def new
-    @book = Book.new(title: params[:search][:title],
+    @book = Book.new(asin: params[:search][:asin],
+                     title: params[:search][:title],
                      author: params[:search][:author],
                      publisher: params[:search][:publisher],
                      image: params[:search][:image]
@@ -14,21 +15,13 @@ class BooksController < ApplicationController
   end
 
   def create
-    # TODO 検索方法を帰る。create_orupdateがいい？ 検索ならasinがいい。
-    # 一意性チェックが聞いていない。モデルで実装。asinを取得するようにする。
     @user = User.find(current_user.id)
-    @book = @user.books.find_by(title: book_params[:title])
-    
-    if @book.blank?
-      @book = @user.books.build(book_params)
-      
-      if @book.save
-        flash[:success] = "本を登録しました。"
-        redirect_to @book
-      else
-        flash[:danger] = "登録が失敗しました。"
-        render 'new'
-      end
+    @book = @user.books.build(book_params)
+    if @book.save
+      flash[:success] = "本を登録しました。"
+      redirect_to @book
+    else
+      render 'new'
     end
   end
 
@@ -67,7 +60,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title,:author, :publisher, :image, { tag_ids: [] })
+    params.require(:book).permit(:asin, :title, :author, :publisher, :image, { tag_ids: [] })
   end
 
   def correct_user 

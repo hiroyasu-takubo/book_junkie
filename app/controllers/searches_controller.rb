@@ -8,7 +8,8 @@ class SearchesController < ApplicationController
     if searchword.blank?
       flash.now[:danger] = '本の名前を入力してください'
       # DBと紐付いている時は必要なかった。初期化しない方法はある？
-      @search = Search.new(title: '',
+      @search = Search.new(asin: '',
+                           title: '',
                            author: '',
                            publisher: '',
                            image: '',
@@ -19,10 +20,12 @@ class SearchesController < ApplicationController
       res = search.book_search(searchword)
       @searches = search.search_result(res)
     end
+    
   end
 
   def new
-    @search = Search.new(title: '',
+    @search = Search.new(asin: '',
+                         title: '',
                          author: '',
                          publisher: '',
                          image: '',
