@@ -1,3 +1,4 @@
+# coding: utf-8
 class SessionsController < ApplicationController
   def new
   end
@@ -9,7 +10,7 @@ class SessionsController < ApplicationController
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_back_or user
     else
-      flash.now[:danger] = 'Invalid email/password combination'
+      flash.now[:danger] = 'パスワードとユーザIDの組み合わせが正しくありません'
       render 'new'
     end
   end

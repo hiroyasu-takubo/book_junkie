@@ -1,0 +1,33 @@
+ja:
+  activerecord:
+    models:
+      book: 本
+      booktag: 本のタグ
+      tag: タグ
+      user: ユーザー
+    attributes:
+      book:
+        id: ID
+        asin: asin
+        title: タイトル
+        author: 著者
+        publisher: 出版社
+        image: 画像
+        created_at: 登録日時
+        updated_at: 更新日時
+      tag:
+        id: ID
+        name: 名前
+        created_at: 登録日時
+        updated_at: 更新日時
+      user:
+        id: ID
+        name: 名前
+        email: Eメールアドレス
+        created_at: 登録日時
+        updated_at: 更新日時
+        password_digest: パスワード
+        remember_digest: 記憶トークン
+        admin: 管理者フラグ
+
+      
