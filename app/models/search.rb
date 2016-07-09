@@ -6,12 +6,22 @@ class Search
   public
   def book_search(searchword, search_index = 'Books', response_group = 'Medium',
                   country = 'jp')
-    res = Amazon::Ecs.item_search(searchword,
-                                  search_index: search_index,
-                                  response_group: response_group,
-                                  country: country
-                                 )
-    res
+    retry_count = 0
+    begin
+      res = Amazon::Ecs.item_search(searchword,
+                                    search_index: search_index,
+                                    response_group: response_group,
+                                    country: country
+                                   )
+      res
+    rescue
+      retry_count += 1
+      if retry_count < 5
+        sleep(10)
+        retry
+      end
+    end
+
   end
 
   def search_result(res)
