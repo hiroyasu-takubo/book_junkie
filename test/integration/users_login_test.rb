@@ -40,7 +40,7 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", login_path
     assert_select "a[href=?]", logout_path,      count: 0
     assert_select "a[href=?]", user_path(@user), count: 0
-    assert_select "a[href=?] ", user_path(@user), count: 0
+    assert_select "a[href=?]", user_path(@user), count: 0
     assert_select "a[href=?]", new_search_path, count: 0
     assert_select "a[href=?]", books_path, count: 0
     assert_select "a[href=?]", new_tag_path, count: 0
