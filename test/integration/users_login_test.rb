@@ -20,12 +20,18 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     get login_path
     post login_path, session: { email: @user.email, password: 'password' }
     assert is_logged_in?
-     assert_redirected_to @user
+    assert_redirected_to @user
     follow_redirect!
     assert_template 'users/show'
     assert_select "a[href=?]", login_path, count: 0
     assert_select "a[href=?]", logout_path
     assert_select "a[href=?]", user_path(@user)
+    assert_select "a[href=?]", new_search_path
+    assert_select "a[href=?]", books_path
+    assert_select "a[href=?]", new_tag_path
+    assert_select "a[href=?]", tags_path
+    assert_select "a[href=?]", new_tag_search_path
+        
     delete logout_path
     assert_not is_logged_in?
     assert_redirected_to root_url
@@ -34,6 +40,13 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", login_path
     assert_select "a[href=?]", logout_path,      count: 0
     assert_select "a[href=?]", user_path(@user), count: 0
+    assert_select "a[href=?] ", user_path(@user), count: 0
+    assert_select "a[href=?]", new_search_path, count: 0
+    assert_select "a[href=?]", books_path, count: 0
+    assert_select "a[href=?]", new_tag_path, count: 0
+    assert_select "a[href=?]", tags_path, count: 0
+    assert_select "a[href=?]", new_tag_search_path, count: 0
+
   end
 
   test "login with remembering" do
