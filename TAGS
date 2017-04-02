@@ -1,61 +1,297 @@
 
-app/assets/javascripts/application.js,0
+app/controllers/application_controller.rb,119
+class ApplicationController < ActionController::BaseApplicationController2,0
+  def logged_in_userlogged_in_user8,0
 
-app/controllers/application_controller.rb,79
-class ApplicationController < ActionController::BaseApplicationController1,0
+app/controllers/books_controller.rb,299
+class BooksController < ApplicationControllerBooksController2,0
+  def newnew6,0
+  def createcreate17,0
+  def showshow28,0
+  def indexindex33,0
+  def editedit38,0
+  def updateupdate44,0
+  def destroydestroy54,0
+  def book_paramsbook_params62,0
+  def correct_user correct_user66,0
 
-app/helpers/application_helper.rb,47
-module ApplicationHelperApplicationHelper1,0
+app/controllers/searches_controller.rb,113
+class SearchesController < ApplicationControllerSearchesController2,0
+  def indexindex5,0
+  def newnew26,0
 
-bin/bundle,0
+app/controllers/sessions_controller.rb,141
+class SessionsController < ApplicationControllerSessionsController2,0
+  def newnew3,0
+  def createcreate6,0
+  def destroydestroy18,0
 
-bin/rails,0
+app/controllers/static_pages_controller.rb,167
+class StaticPagesController < ApplicationControllerStaticPagesController1,0
+  def homehome2,0
+  def helphelp5,0
+  def aboutabout8,0
+  def contactcontact12,0
 
-bin/rake,0
+app/controllers/tag_search_controller.rb,114
+class TagSearchController < ApplicationControllerTagSearchController2,0
+  def newnew5,0
+  def indexindex8,0
 
-bin/setup,0
+app/controllers/tags_controller.rb,294
+class TagsController < ApplicationControllerTagsController2,0
+  def newnew6,0
+  def showshow10,0
+  def createcreate14,0
+  def indexindex24,0
+  def editedit28,0
+  def updateupdate32,0
+  def destroydestroy43,0
+  def tag_paramstag_params51,0
+  def correct_usercorrect_user55,0
 
-bin/spring,0
+app/controllers/users_controller.rb,331
+class UsersController < ApplicationControllerUsersController2,0
+  def indexindex7,0
+  def showshow11,0
+  def newnew15,0
+  def createcreate19,0
+  def editedit30,0
+  def updateupdate34,0
+  def destroydestroy44,0
+  def user_paramsuser_params52,0
+  def correct_usercorrect_user57,0
+  def admin_useradmin_user62,0
 
-config/application.rb,97
-module TomeGlimpseTomeGlimpse9,214
-  class Application < Rails::ApplicationApplication10,233
+app/helpers/application_helper.rb,134
+module ApplicationHelperApplicationHelper2,0
+  def full_title(page_title = '')full_title5,0
+  def user(page_title = '')user15,0
 
-config/boot.rb,0
+app/helpers/books_helper.rb,35
+module BooksHelperBooksHelper2,0
 
-config/environment.rb,0
+app/helpers/booksearch_helper.rb,45
+module BooksearchHelperBooksearchHelper1,0
 
-config/environments/development.rb,0
+app/helpers/searches_helper.rb,89
+module SearchesHelperSearchesHelper1,0
+  def search_to_hash(search)search_to_hash2,0
 
-config/environments/production.rb,0
+app/helpers/sessions_helper.rb,373
+module SessionsHelperSessionsHelper1,0
+  def log_in(user)log_in3,0
+  def remember(user)remember7,0
+  def current_usercurrent_user13,0
+  def current_user?(user)current_user?25,0
+  def logged_in?logged_in?29,0
+  def forget(user)forget33,0
+  def log_outlog_out39,0
+  def redirect_back_or(default)redirect_back_or45,0
+  def store_locationstore_location50,0
 
-config/environments/test.rb,0
+app/helpers/static_pages_helper.rb,47
+module StaticPagesHelperStaticPagesHelper1,0
 
-config/initializers/assets.rb,0
+app/helpers/tag_search_helper.rb,43
+module TagSearchHelperTagSearchHelper1,0
 
-config/initializers/backtrace_silencers.rb,0
+app/helpers/tags_helper.rb,33
+module TagsHelperTagsHelper1,0
 
-config/initializers/cookies_serializer.rb,0
+app/helpers/users_helper.rb,101
+module UsersHelperUsersHelper2,0
+  def gravatar_for(user, options = { size: 80 })gravatar_for5,0
 
-config/initializers/filter_parameter_logging.rb,0
+app/models/book.rb,623
+class Book < ActiveRecord::BaseBook2,0
+  belongs_to :useruser3,0
+  belongs_to :useruser=3,0
+  belongs_to :userbuild_user3,0
+  belongs_to :usercreate_user3,0
+  belongs_to :usercreate_user!3,0
+  has_many :tags, through: :booktagstags4,0
+  has_many :tags, through: :booktagstags=4,0
+  has_many :tags, through: :booktagstag_ids4,0
+  has_many :tags, through: :booktagstag_ids=4,0
+  has_many :booktags, dependent: :destroybooktags5,0
+  has_many :booktags, dependent: :destroybooktags=5,0
+  has_many :booktags, dependent: :destroybooktag_ids5,0
+  has_many :booktags, dependent: :destroybooktag_ids=5,0
 
-config/initializers/inflections.rb,0
+app/models/booktag.rb,361
+class Booktag < ActiveRecord::BaseBooktag1,0
+  belongs_to :bookbook2,0
+  belongs_to :bookbook=2,0
+  belongs_to :bookbuild_book2,0
+  belongs_to :bookcreate_book2,0
+  belongs_to :bookcreate_book!2,0
+  belongs_to :tagtag3,0
+  belongs_to :tagtag=3,0
+  belongs_to :tagbuild_tag3,0
+  belongs_to :tagcreate_tag3,0
+  belongs_to :tagcreate_tag!3,0
 
-config/initializers/mime_types.rb,0
+app/models/search.rb,1131
+class SearchSearch2,0
+  attr_accessor :asin, :title, :author, :publisher, :image, :keywordasin5,0
+  attr_accessor :asin, :title, :author, :publisher, :image, :keywordasin=5,0
+  attr_accessor :asin, :title, :author, :publisher, :image, :keywordtitle5,0
+  attr_accessor :asin, :title, :author, :publisher, :image, :keywordtitle=5,0
+  attr_accessor :asin, :title, :author, :publisher, :image, :keywordauthor5,0
+  attr_accessor :asin, :title, :author, :publisher, :image, :keywordauthor=5,0
+  attr_accessor :asin, :title, :author, :publisher, :image, :keywordpublisher5,0
+  attr_accessor :asin, :title, :author, :publisher, :image, :keywordpublisher=5,0
+  attr_accessor :asin, :title, :author, :publisher, :image, :keywordimage5,0
+  attr_accessor :asin, :title, :author, :publisher, :image, :keywordimage=5,0
+  attr_accessor :asin, :title, :author, :publisher, :image, :keywordkeyword5,0
+  attr_accessor :asin, :title, :author, :publisher, :image, :keywordkeyword=5,0
+  def book_search(searchword, search_index = 'Books', response_group = 'Medium',book_search7,0
+  def search_result(res)search_result27,0
 
-config/initializers/session_store.rb,0
+app/models/tag.rb,629
+class Tag < ActiveRecord::BaseTag2,0
+  belongs_to :useruser5,0
+  belongs_to :useruser=5,0
+  belongs_to :userbuild_user5,0
+  belongs_to :usercreate_user5,0
+  belongs_to :usercreate_user!5,0
+  has_many :books, through: :booktagsbooks6,0
+  has_many :books, through: :booktagsbooks=6,0
+  has_many :books, through: :booktagsbook_ids6,0
+  has_many :books, through: :booktagsbook_ids=6,0
+  has_many :booktags, dependent: :destroybooktags7,0
+  has_many :booktags, dependent: :destroybooktags=7,0
+  has_many :booktags, dependent: :destroybooktag_ids7,0
+  has_many :booktags, dependent: :destroybooktag_ids=7,0
 
-config/initializers/wrap_parameters.rb,0
+app/models/user.rb,810
+class User < ActiveRecord::BaseUser1,0
+  attr_accessor :remember_tokenremember_token2,0
+  attr_accessor :remember_tokenremember_token=2,0
+  has_many :books, dependent: :destroybooks3,0
+  has_many :books, dependent: :destroybooks=3,0
+  has_many :books, dependent: :destroybook_ids3,0
+  has_many :books, dependent: :destroybook_ids=3,0
+  has_many :tags, dependent: :destroytags4,0
+  has_many :tags, dependent: :destroytags=4,0
+  has_many :tags, dependent: :destroytag_ids4,0
+  has_many :tags, dependent: :destroytag_ids=4,0
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/iVALID_EMAIL_REGEX9,0
+  def User.digest(string)digest17,0
+  def User.new_tokennew_token23,0
+  def rememberremember27,0
+  def authenticated?(remember_token)authenticated?32,0
+  def forgetforget37,0
 
-config/routes.rb,0
+config/application.rb,94
+module TomeGlimpseTomeGlimpse11,0
+  class Application < Rails::ApplicationApplication12,0
 
-db/seeds.rb,0
+db/migrate/20160217112553_create_users.rb,84
+class CreateUsers < ActiveRecord::MigrationCreateUsers1,0
+  def changechange2,0
 
-public/404.html,0
+db/migrate/20160217125918_add_index_to_users_email.rb,102
+class AddIndexToUsersEmail < ActiveRecord::MigrationAddIndexToUsersEmail1,0
+  def changechange2,0
 
-public/422.html,0
+db/migrate/20160220014515_add_password_digest_to_users.rb,110
+class AddPasswordDigestToUsers < ActiveRecord::MigrationAddPasswordDigestToUsers1,0
+  def changechange2,0
 
-public/500.html,0
+db/migrate/20160221042619_add_remember_digest_to_users.rb,110
+class AddRememberDigestToUsers < ActiveRecord::MigrationAddRememberDigestToUsers1,0
+  def changechange2,0
 
-test/test_helper.rb,50
-class ActiveSupport::TestCaseActiveSupport5,118
+db/migrate/20160319122303_add_admin_to_users.rb,92
+class AddAdminToUsers < ActiveRecord::MigrationAddAdminToUsers1,0
+  def changechange2,0
+
+db/migrate/20160403064041_create_tags.rb,82
+class CreateTags < ActiveRecord::MigrationCreateTags1,0
+  def changechange2,0
+
+db/migrate/20160413133110_create_booktags.rb,90
+class CreateBooktags < ActiveRecord::MigrationCreateBooktags1,0
+  def changechange2,0
+
+db/migrate/20160417063855_create_books.rb,84
+class CreateBooks < ActiveRecord::MigrationCreateBooks1,0
+  def changechange2,0
+
+test/controllers/books_controller_test.rb,101
+class BooksControllerTest < ActionController::TestCaseBooksControllerTest4,0
+  def setupsetup6,0
+
+test/controllers/searches_controller_test.rb,107
+class SearchesControllerTest < ActionController::TestCaseSearchesControllerTest3,0
+  def setupsetup5,0
+
+test/controllers/sessions_controller_test.rb,85
+class SessionsControllerTest < ActionController::TestCaseSessionsControllerTest3,0
+
+test/controllers/static_pages_controller_test.rb,91
+class StaticPagesControllerTest < ActionController::TestCaseStaticPagesControllerTest3,0
+
+test/controllers/tag_search_controller_test.rb,109
+class TagSearchControllerTest < ActionController::TestCaseTagSearchControllerTest4,0
+  def setupsetup5,0
+
+test/controllers/tags_controller_test.rb,99
+class TagsControllerTest < ActionController::TestCaseTagsControllerTest4,0
+  def setupsetup5,0
+
+test/controllers/users_controller_test.rb,101
+class UsersControllerTest < ActionController::TestCaseUsersControllerTest3,0
+  def setupsetup5,0
+
+test/helpers/sessions_helper_test.rb,93
+class SessionsHelperTest < ActionView::TestCaseSessionsHelperTest3,0
+  def setupsetup5,0
+
+test/integration/book_create_test.rb,96
+class BookCreateTest < ActionDispatch::IntegrationTestBookCreateTest4,0
+  def setupsetup6,0
+
+test/integration/site_layout_test.rb,74
+class SiteLayoutTest < ActionDispatch::IntegrationTestSiteLayoutTest3,0
+
+test/integration/tag_interface_test.rb,100
+class TagInterfaceTest < ActionDispatch::IntegrationTestTagInterfaceTest4,0
+  def setupsetup5,0
+
+test/integration/users_edit_test.rb,94
+class UsersEditTest < ActionDispatch::IntegrationTestUsersEditTest3,0
+  def setupsetup5,0
+
+test/integration/users_index_test.rb,96
+class UsersIndexTest < ActionDispatch::IntegrationTestUsersIndexTest3,0
+  def setupsetup5,0
+
+test/integration/users_login_test.rb,94
+class UserLoginTest < ActionDispatch::IntegrationTestUserLoginTest3,0
+  def setupsetup5,0
+
+test/integration/users_signup_test.rb,76
+class UsersSignupTest < ActionDispatch::IntegrationTestUsersSignupTest4,0
+
+test/models/book_test.rb,54
+class BookTest < ActiveSupport::TestCaseBookTest3,0
+
+test/models/booktag_test.rb,60
+class BooktagTest < ActiveSupport::TestCaseBooktagTest3,0
+
+test/models/tag_test.rb,74
+class TagTest < ActiveSupport::TestCaseTagTest3,0
+  def setupsetup4,0
+
+test/models/user_test.rb,76
+class UserTest < ActiveSupport::TestCaseUserTest3,0
+  def setupsetup4,0
+
+test/test_helper.rb,180
+class ActiveSupport::TestCaseTestCase5,0
+  def is_logged_in?is_logged_in?11,0
+  def log_in_as(user, options = {})log_in_as16,0
+  def integration_test?integration_test?30,0
